@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Amor da Minha Vida 💖</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="imgs/birthday cake inspo.png" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght=0,300;0,400;0,700;0,900;1,900&family=Playfair+Display:ital,wght=0,700;1,700&display=swap" rel="stylesheet">
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0b050a;
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        .font-serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Ambient glowing backgrounds */
+        .glow-blob {
+            filter: blur(90px);
+            opacity: 0.5;
+            mix-blend-mode: screen;
+            animation: floatGlow 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(8%, 12%) scale(1.2); }
+            100% { transform: translate(-8%, -6%) scale(0.85); }
+        }
+
+        /* Card transition effects */
+        .story-card {
+            transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Active/inactive classes for Story slider */
+        .story-card.inactive-left {
+            transform: translateX(-105%) scale(0.88) rotate(-4deg);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .story-card.inactive-right {
+            transform: translateX(105%) scale(0.88) rotate(4deg);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .story-card.active {
+            transform: translateX(0) scale(1) rotate(0deg);
+            opacity: 1;
+            z-index: 10;
+        }
+
+        /* Progress bars at top */
+        .progress-indicator {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 2px;
+            overflow: hidden;
+            flex-grow: 1;
+            margin: 0 3px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background-color: #ff4a7d;
+            transition: width 0.1s linear;
+        }
+
+        .progress-fill.completed {
+            width: 100% !important;
+            background-color: #ffffff;
+        }
+
+        /* Dynamic Visualizer Bar animation */
+        @keyframes bounceBar {
+            0%, 100% { height: 8px; }
+            50% { height: 28px; }
+        }
+
+        .visualizer-bar {
+            width: 3px;
+            background-color: #ff4a7d;
+            margin: 0 1px;
+            border-radius: 2px;
+        }
+
+        .visualizer-bar:nth-child(2) { animation: bounceBar 0.8s ease-in-out infinite 0.1s; }
+        .visualizer-bar:nth-child(3) { animation: bounceBar 1.1s ease-in-out infinite 0.3s; }
+        .visualizer-bar:nth-child(4) { animation: bounceBar 0.9s ease-in-out infinite 0.2s; }
+        .visualizer-bar:nth-child(5) { animation: bounceBar 0.7s ease-in-out infinite 0.4s; }
+        .visualizer-bar:nth-child(6) { animation: bounceBar 1.2s ease-in-out infinite 0.15s; }
+
+        /* Custom heart particles */
+        .heart-particle {
+            position: absolute;
+            pointer-events: none;
+            animation: floatUp 3.5s ease-out forwards;
+            z-index: 50;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            15% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-15vh) scale(1.6) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Pulsing Glow button */
+        .pulse-pink {
+            box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+            animation: pulseP 2s infinite;
+        }
+        @keyframes pulseP {
+            70% { box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+    </style>
+</head>
+<body class="text-white flex items-center justify-center min-h-screen relative overflow-hidden p-3 md:p-6 select-none">
+
+    <!-- Ambient Blur Blobs -->
+    <div class="absolute w-[320px] h-[320px] rounded-full bg-rose-600 glow-blob top-[5%] left-[3%] pointer-events-none"></div>
+    <div class="absolute w-[380px] h-[380px] rounded-full bg-pink-500 glow-blob bottom-[10%] right-[3%] pointer-events-none"></div>
+    <div class="absolute w-[300px] h-[300px] rounded-full bg-violet-700 glow-blob top-[35%] left-[45%] -translate-x-1/2 pointer-events-none"></div>
+
+    <!-- HEART EMITTER CONTAINER -->
+    <div id="heartContainer" class="absolute inset-0 pointer-events-none overflow-hidden z-40"></div>
+
+    <!-- MAIN CARD WRAPPER (Smartphone style Frame) -->
+    <div class="relative w-full max-w-[420px] h-[780px] rounded-[36px] bg-[#0f040b]/95 border border-neutral-800/80 shadow-2xl overflow-hidden flex flex-col justify-between p-6 z-10 transition-all duration-300">
+        
+        <!-- TOP CONTROL BAR: Progress Indicators, Playback Tag, Sound -->
+        <div>
+            <!-- Progress lines -->
+            <div id="progressIndicators" class="flex justify-between items-center mb-4">
+                <!-- Will be dynamically populated via Javascript -->
+            </div>
+
+            <!-- Header Info -->
+            <div class="flex justify-between items-center text-[10px] text-neutral-400 font-bold uppercase tracking-widest px-1">
+                <!-- Interactive Carousel Control -->
+                <div id="carouselPauseBtn" onclick="toggleCarouselPause()" class="flex items-center gap-2 bg-neutral-900/80 px-3 py-1.5 rounded-full border border-white/5 cursor-pointer hover:bg-neutral-800 transition-colors">
+                    <span id="carouselPulseDot" class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
+                    <i id="carouselPauseIcon" class="fa-solid fa-pause text-rose-400 text-[9px]"></i>
+                    <span id="carouselPauseText" class="text-[9px] font-black uppercase text-neutral-400">PAUSAR HISTÓRIA</span>
+                </div>
+
+                <!-- Interactive Music Control -->
+                <div class="flex items-center gap-2 bg-neutral-900/80 px-3 py-1.5 rounded-full border border-white/5 cursor-pointer hover:bg-neutral-800 transition-colors" onclick="toggleAudioPlayback()">
+                    <div id="visualizerIcon" class="flex items-center h-4 mr-1">
+                        <!-- Simulated Visualizer Bars -->
+                        <div class="visualizer-bar h-2"></div>
+                        <div class="visualizer-bar h-2"></div>
+                        <div class="visualizer-bar h-2"></div>
+                        <div class="visualizer-bar h-2"></div>
+                        <div class="visualizer-bar h-2"></div>
+                        <div class="visualizer-bar h-2"></div>
+                    </div>
+                    <span id="musicStatusText" class="text-[9px] font-black uppercase text-neutral-400">LIGAR MÚSICA</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN STORIES VIEW CONTAINER -->
+        <div class="relative w-full flex-grow my-4 overflow-hidden rounded-[24px]">
+
+            <!-- SLIDE 1: INTRO (Warm, human, and romantic) -->
+            <div class="story-card active bg-gradient-to-br from-[#7c1d3c] via-[#5c1c43] to-[#230214] flex flex-col justify-between p-6" data-duration="8500">
+                <div class="mt-4">
+                    <span class="text-[10px] uppercase tracking-widest font-black bg-rose-500/30 text-rose-200 border border-rose-500/30 px-3.5 py-1 rounded-full inline-block mb-3 animate-bounce">
+                        <i class="fa-solid fa-heart mr-1.5"></i> Meu Amor, Abra Isso!
+                    </span>
+                    <h1 class="text-3xl font-black tracking-tight leading-none mt-1">
+                        Feliz Dia dos<br>
+                        <span class="underline decoration-pink-500 decoration-wavy text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-rose-300">Namorados</span>
+                    </h1>
+                </div>
+
+                <!-- Photo Space -->
+                <div class="w-full h-56 rounded-2xl overflow-hidden border-2 border-pink-500/30 shadow-xl relative bg-neutral-950/50 flex flex-col items-center justify-center p-4">
+                    <div class="absolute inset-0 bg-cover bg-center opacity-70 transition-transform duration-700 hover:scale-110" onerror="this.style.background='#500e2e'"><img src="imgs/foto-principal-2.jpg" style="height: 100%; width: 100%; object-fit: cover;" alt="" srcset=""></div>
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+                    <div class="relative z-10 text-center mt-auto">
+                        <i class="fa-solid fa-heart-pulse text-pink-500 text-3xl mb-1 animate-pulse"></i>
+                        <p class="text-xs font-bold text-neutral-100">Preparei uma surpresinha para você...</p>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <p class="text-xs text-rose-100/90 leading-relaxed">
+                        Eu queria te dar um presente diferente hoje. Algo simples, mas que mostrasse o quanto eu amo cada pequeno momento da nossa história. Prepara o coração e dá uma olhada...
+                    </p>
+                    <div class="flex items-center gap-2 text-[10px] text-pink-300 font-bold mt-2.5 uppercase tracking-wider">
+                        <i class="fa-solid fa-hand-pointer animate-ping"></i>
+                        <span>Toque nas laterais para ler</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: TIME TOGETHER (Contador de Aniversário) -->
+            <div class="story-card inactive-right bg-gradient-to-br from-[#1d102e] via-[#33113b] to-black flex flex-col justify-between p-6" data-duration="9500">
+                <div class="mt-4">
+                    <span class="text-[10px] uppercase tracking-widest font-black bg-violet-500/30 text-violet-300 px-3.5 py-1 rounded-full inline-block mb-3 border border-violet-500/20">
+                        <i class="fa-solid fa-hourglass-half mr-1.5"></i>Nosso Tempo Juntos
+                    </span>
+                    <h2 class="text-2xl font-extrabold tracking-tight leading-tight">Olha só quanto tempo faz que a minha vida ficou mais feliz...</h2>
+                </div>
+
+                <!-- Live Counter Card -->
+                <div class="glass-panel w-full p-4 rounded-2xl shadow-xl flex flex-col gap-2.5 my-auto">
+                    <div class="text-center">
+                        <p class="text-xs text-neutral-300 font-semibold mb-1">Cada segundo ao seu lado vale a pena ❤️</p>
+                    </div>
+                    <div id="counterContainer" class="grid grid-cols-4 gap-2 text-center">
+                        <div class="bg-black/50 p-2 rounded-xl border border-white/5">
+                            <span id="count-days" class="block text-xl font-black text-rose-400">00</span>
+                            <span class="text-[9px] text-neutral-400 uppercase">Dias</span>
+                        </div>
+                        <div class="bg-black/50 p-2 rounded-xl border border-white/5">
+                            <span id="count-hours" class="block text-xl font-black text-rose-400">00</span>
+                            <span class="text-[9px] text-neutral-400 uppercase">Horas</span>
+                        </div>
+                        <div class="bg-black/50 p-2 rounded-xl border border-white/5">
+                            <span id="count-minutes" class="block text-xl font-black text-rose-400">00</span>
+                            <span class="text-[9px] text-neutral-400 uppercase">Min</span>
+                        </div>
+                        <div class="bg-black/50 p-2 rounded-xl border border-white/5">
+                            <span id="count-seconds" class="block text-xl font-black text-pink-400 animate-pulse">00</span>
+                            <span class="text-[9px] text-neutral-400 uppercase">Seg</span>
+                        </div>
+                    </div>
+                    <div class="text-[10px] text-center text-neutral-300 mt-1 italic leading-tight">
+                        E hoje celebramos mais um Dia dos Namorados <span class="text-pink-400 font-bold">juntinhos</span>!
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <p class="text-xs text-neutral-300 leading-relaxed">
+                        Parece que foi ontem que tudo começou, mas quando vejo quanta coisa linda a gente já viveu, percebo o quanto o nosso amor cresceu e amadureceu. Sou muito sortudo!
+                    </p>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: OUR SONG (Personal music dedication) -->
+            <div class="story-card inactive-right bg-gradient-to-br from-[#121214] via-[#1f0714] to-black flex flex-col justify-between p-6" data-duration="11000">
+                <div class="mt-4">
+                    <span class="text-[10px] uppercase tracking-widest font-black bg-rose-500/20 text-rose-400 px-3.5 py-1 rounded-full inline-block mb-3 border border-rose-500/20">
+                        <i class="fa-solid fa-music mr-1.5"></i>Uma Canção para Você
+                    </span>
+                    <h2 class="text-3xl font-black tracking-tight leading-none">A melodia que me lembra <span class="text-pink-400">nós dois</span></h2>
+                </div>
+
+                <!-- Custom Audio Player Setup -->
+                <div class="glass-panel w-full p-4 rounded-2xl flex flex-col gap-3.5 my-auto shadow-xl relative overflow-hidden">
+                    <div class="flex gap-4 items-center">
+                        <div class="w-20 h-20 rounded-lg bg-neutral-800 flex-shrink-0 relative overflow-hidden border border-white/10 group">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-115"></div>
+                            <img src="/imgs/ab67616d0000b273580807847387ba7a07607134.jpg" alt="" srcset="">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-100">
+                                <i id="discIcon" class="fa-solid fa-compact-disc text-white text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow min-w-0">
+                            <!-- Altere o título e subtítulo abaixo -->
+                            <h3 id="musicaTitulo" class="text-sm font-black text-white truncate">Sweater Weather</h3>
+                            <p class="text-xs text-rose-400 font-bold truncate">Artista - 
+The Neighbourhood</p>
+                            <p class="text-[10px] text-neutral-400 mt-1 truncate">Álbum: "Nossa História"</p>
+                        </div>
+                    </div>
+
+                    <!-- Audio progress visualization -->
+                    <div>
+                        <div class="relative w-full h-1 bg-neutral-700 rounded-full overflow-hidden">
+                            <div id="audioProgressBar" class="absolute top-0 left-0 h-full w-[0%] bg-pink-500 rounded-full"></div>
+                        </div>
+                        <div class="flex justify-between text-[9px] text-neutral-400 mt-1.5 font-bold">
+                            <span id="audioCurrentTime">00:00</span>
+                            <span class="text-pink-400 animate-pulse">Tocando nossa melodia favorita</span>
+                            <span id="audioDuration">00:00</span>
+                        </div>
+                    </div>
+
+                    <!-- Interactive controls -->
+                    <div class="flex justify-center items-center gap-6 mt-1">
+                        <button class="text-neutral-400 hover:text-white transition-colors"><i class="fa-solid fa-shuffle text-xs"></i></button>
+                        <button class="text-neutral-400 hover:text-white transition-colors text-lg"><i class="fa-solid fa-backward-step"></i></button>
+                        <button onclick="toggleAudioPlayback()" class="w-11 h-11 rounded-full bg-white text-black flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-md pulse-pink">
+                            <i id="playPauseIcon" class="fa-solid fa-play text-sm ml-0.5"></i>
+                        </button>
+                        <button class="text-neutral-400 hover:text-white transition-colors text-lg"><i class="fa-solid fa-forward-step"></i></button>
+                        <button class="text-neutral-400 hover:text-white transition-colors"><i class="fa-solid fa-repeat text-xs text-pink-500"></i></button>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <p class="text-xs text-neutral-300 leading-relaxed text-center italic">
+                        "Toda vez que eu escuto essa música, fecho os olhos e penso no seu sorriso. Ela virou a trilha sonora oficial de todos os meus dias felizes."
+                    </p>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: GALERIA DE FOTOS (Personal memory) -->
+            <div class="story-card inactive-right bg-gradient-to-br from-[#50101e] via-[#350711] to-[#0a0004] flex flex-col justify-between p-6" data-duration="10500">
+                <div class="mt-4">
+                    <span class="text-[10px] uppercase tracking-widest font-black bg-rose-500/20 text-rose-300 px-3.5 py-1 rounded-full inline-block mb-3 border border-rose-500/10">
+                        <i class="fa-solid fa-camera-retro mr-1.5"></i>Nossas Lembranças
+                    </span>
+                    <h2 class="text-3xl font-extrabold tracking-tight leading-none">Guardado com muito <span class="text-pink-400">carinho</span></h2>
+                </div>
+
+                <!-- Custom Photo Grid -->
+                <div class="grid grid-cols-2 gap-3.5 my-auto">
+                    <!-- Photo Frame 1 -->
+                    <div class="bg-black/40 p-2 rounded-2xl border border-white/10 shadow-lg transform rotate-[-3deg] hover:rotate-0 transition-all duration-300">
+                        <div class="w-full h-36 rounded-xl overflow-hidden bg-neutral-900 relative">
+                            
+                            <div class="absolute inset-0 bg-contain bg-center"  onerror="this.style.background='#4c0519'">
+                                <img src="imgs/foto-1.jpg" style="height: 143px; width: 143px; object-fit: cover;"  alt="" srcset="">
+                            </div>
+                        </div>
+                        <p class="text-[9px] font-black text-center text-pink-200 mt-2 uppercase tracking-wide">Um dia lindo</p>
+                    </div>
+
+                    <!-- Photo Frame 2 -->
+                    <div class="bg-black/40 p-2 rounded-2xl border border-white/10 shadow-lg transform rotate-[3deg] hover:rotate-0 transition-all duration-300">
+                        <div class="w-full h-36 rounded-xl overflow-hidden bg-neutral-900 relative">
+                            
+                            <div class="absolute inset-0 bg-contain bg-center" onerror="this.style.background='#4a044e'">
+                                <img src="imgs/foto-2.jpg" style="height: 143px; width: 143px; object-fit: cover;" alt="" srcset="">
+                            </div>
+                        </div>
+                        <p class="text-[9px] font-black text-center text-pink-200 mt-2 uppercase tracking-wide">Meu momento feliz</p>
+                    </div>
+                </div>
+
+                <div class="mb-4 bg-black/35 p-3.5 rounded-xl border border-white/5 text-center">
+                    <p class="text-xs text-rose-100 leading-relaxed">
+                        Tiramos tantas fotos bobas, engraçadas e românticas, mas na verdade a minha imagem favorita é aquela que vejo ao vivo toda vez que você me olha e sorri.
+                    </p>
+                </div>
+            </div>
+
+             <div class="story-card inactive-right bg-gradient-to-br from-[#50101e] via-[#350711] to-[#0a0004] flex flex-col justify-between p-6" data-duration="10500">
+                <div class="mt-4">
+                    <span class="text-[10px] uppercase tracking-widest font-black bg-rose-500/20 text-rose-300 px-3.5 py-1 rounded-full inline-block mb-3 border border-rose-500/10">
+                        <i class="fa-solid fa-camera-retro mr-1.5"></i>Nossas Lembranças
+                    </span>
+                    <h2 class="text-3xl font-extrabold tracking-tight leading-none">Guardado com muito <span class="text-pink-400">carinho</span></h2>
+                </div>
+
+                <!-- Custom Photo Grid -->
+                <div class="grid grid-cols-2 gap-3.5 my-auto">
+                    <!-- Photo Frame 1 -->
+                    <div class="bg-black/40 p-2 rounded-2xl border border-white/10 shadow-lg transform rotate-[-3deg] hover:rotate-0 transition-all duration-300">
+                        <div class="w-full h-36 rounded-xl overflow-hidden bg-neutral-900 relative">
+                            <div class="absolute inset-0 bg-contain bg-center" onerror="this.style.background='#4c0519'">
+                                <img src="imgs/foto-3.jpg" style="height: 143px; width: 143px; object-fit: cover;" alt="" srcset="">
+                            </div>
+                            
+                        </div>
+                        <p class="text-[9px] font-black text-center text-pink-200 mt-2 uppercase tracking-wide">Um dia lindo</p>
+                    </div>
+
+                    <!-- Photo Frame 2 -->
+                    <div class="bg-black/40 p-2 rounded-2xl border border-white/10 shadow-lg transform rotate-[3deg] hover:rotate-0 transition-all duration-300">
+                        <div class="w-full h-36 rounded-xl overflow-hidden bg-neutral-900 relative">
+                            <div class="absolute inset-0 bg-contain bg-center" onerror="this.style.background='#4a044e'">
+                            <img src="imgs/foto-4.jpg" style="height: 143px; width: 143px; object-fit: cover;" alt="" srcset="">
+                            </div>
+                        </div>
+                        <p class="text-[9px] font-black text-center text-pink-200 mt-2 uppercase tracking-wide">Meu momento feliz</p>
+                    </div>
+                </div>
+
+                <div class="mb-4 bg-black/35 p-3.5 rounded-xl border border-white/5 text-center">
+                    <p class="text-xs text-rose-100 leading-relaxed">
+                        Tiramos tantas fotos bobas, engraçadas e românticas, mas na verdade a minha imagem favorita é aquela que vejo ao vivo toda vez que você me olha e sorri.
+                    </p>
+                </div>
+            </div>
+
+            <!-- SLIDE 5: INTERACTIVE ROMANTIC GAME -->
+            <div class="story-card inactive-right bg-gradient-to-br from-[#270c3c] via-[#120421] to-[#040107] flex flex-col justify-between p-6" data-duration="12000">
+                <div class="mt-4">
+                    <span class="text-[10px] uppercase tracking-widest font-black bg-purple-500/20 text-purple-300 px-3.5 py-1 rounded-full inline-block mb-3 border border-purple-500/10">
+                        <i class="fa-solid fa-gamepad mr-1.5"></i>Uma Brincadeira Rápida
+                    </span>
+                    <h2 class="text-3xl font-extrabold tracking-tight leading-none">O que a gente vai fazer <span class="text-purple-300">hoje?</span></h2>
+                </div>
+
+                <!-- Interactive Valentine's Quiz -->
+                <div class="glass-panel w-full p-4 rounded-2xl my-auto flex flex-col gap-3">
+                    <p class="text-xs text-neutral-200 font-bold text-center">Não vale dizer "tanto faz"! Qual o plano perfeito?</p>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="selectValentineOption(this, 'rodizio')" class="quiz-btn w-full p-3 rounded-xl bg-neutral-900/80 border border-white/10 text-left text-xs font-bold hover:bg-neutral-800 transition-all flex justify-between items-center">
+                            <span>comer a sua batatinha frita 🍟</span>
+                            <i class="fa-regular fa-circle text-neutral-500"></i>
+                        </button>
+                        <button onclick="selectValentineOption(this, 'netflix')" class="quiz-btn w-full p-3 rounded-xl bg-neutral-900/80 border border-white/10 text-left text-xs font-bold hover:bg-neutral-800 transition-all flex justify-between items-center">
+                            <span>Filminho debaixo das cobertas + cafuné 😊</span>
+                            <i class="fa-regular fa-circle text-neutral-500"></i>
+                        </button>
+                        <button onclick="selectValentineOption(this, 'todas')" class="quiz-btn w-full p-3 rounded-xl bg-neutral-900/80 border border-white/10 text-left text-xs font-bold hover:bg-neutral-800 transition-all flex justify-between items-center">
+                            <span>Todas as opções anteriores juntas! ❤️</span>
+                            <i class="fa-regular fa-circle text-neutral-500"></i>
+                        </button>
+                    </div>
+                    <p id="quizFeedback" class="text-[10px] text-center font-bold text-neutral-400 h-4 transition-all duration-300"></p>
+                </div>
+
+                <div class="mb-4">
+                    <p class="text-xs text-purple-200 leading-relaxed text-center">
+                        Para ser bem sincero, não importa o que a gente faça... o meu lugar preferido no mundo sempre vai ser ao seu lado.
+                    </p>
+                </div>
+            </div>
+
+            <!-- SLIDE 6: VALES DE AMOR (Interactive Coupons) -->
+            <div class="story-card inactive-right bg-gradient-to-br from-[#12020a] via-[#1c030f] to-[#040003] flex flex-col justify-between p-6 overflow-y-auto" data-duration="20000">
+                <div class="text-center mt-3">
+                    <i class="fa-solid fa-heart text-rose-500 text-3xl animate-pulse mb-1"></i>
+                    <h2 class="text-xl font-black uppercase tracking-widest text-white">VALES ESPECIAIS</h2>
+                </div>
+
+                <!-- Interactive Voucher Coupons Panel -->
+                <div class="glass-panel w-full p-4 rounded-2xl shadow-xl flex flex-col gap-3 my-auto">
+                    <div class="text-center">
+                        <span class="text-[9px] uppercase font-black text-rose-400 tracking-wider block">Mimos Para Você</span>
+                        <h4 class="text-xs font-bold text-white">Guarde e resgate quando quiser</h4>
+                        <p class="text-[9px] text-neutral-400">Clique para ativar (prometo cumprir de verdade!)</p>
+                    </div>
+
+                    <!-- Interactive Vouchers Grid -->
+                    <div class="flex flex-col gap-2">
+                        <!-- Voucher 1 -->
+                        <div onclick="claimCoupon(this, 'Massagem Caprichada 💆‍♀️')" class="flex justify-between items-center bg-neutral-900/70 hover:bg-neutral-800 border border-white/10 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95 group">
+                            <div class="flex items-center gap-2">
+                                <span class="w-7 h-7 bg-rose-500/20 text-rose-400 rounded-lg flex items-center justify-center text-xs group-hover:bg-rose-500/30 transition-colors">
+                                    <i class="fa-solid fa-spa"></i>
+                                </span>
+                                <div>
+                                    <span class="block text-xs font-bold text-white">Vale Massagem Caprichada</span>
+                                    <span class="text-[8px] text-neutral-400 uppercase">Validade: Eterna</span>
+                                </div>
+                            </div>
+                            <span class="coupon-status text-[9px] bg-rose-600/20 text-rose-300 font-extrabold px-2 py-1 rounded-md border border-rose-500/20">RESGATAR</span>
+                        </div>
+
+                        <!-- Voucher 2 -->
+                        <div onclick="claimCoupon(this, 'Jantar Especial 🍕')" class="flex justify-between items-center bg-neutral-900/70 hover:bg-neutral-800 border border-white/10 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95 group">
+                            <div class="flex items-center gap-2">
+                                <span class="w-7 h-7 bg-pink-500/20 text-pink-400 rounded-lg flex items-center justify-center text-xs group-hover:bg-pink-500/30 transition-colors">
+                                    <i class="fa-solid fa-utensils"></i>
+                                </span>
+                                <div>
+                                    <span class="block text-xs font-bold text-white">Vale Jantar por Minha Conta</span>
+                                    <span class="text-[8px] text-neutral-400 uppercase">No seu lugar preferido</span>
+                                </div>
+                            </div>
+                            <span class="coupon-status text-[9px] bg-pink-600/20 text-pink-300 font-extrabold px-2 py-1 rounded-md border border-pink-500/20">RESGATAR</span>
+                        </div>
+
+                        <!-- Voucher 3 -->
+                        <div onclick="claimCoupon(this, 'Cafuné Sem Pressa 🥰')" class="flex justify-between items-center bg-neutral-900/70 hover:bg-neutral-800 border border-white/10 p-2.5 rounded-xl cursor-pointer transition-all active:scale-95 group">
+                            <div class="flex items-center gap-2">
+                                <span class="w-7 h-7 bg-purple-500/20 text-purple-400 rounded-lg flex items-center justify-center text-xs group-hover:bg-purple-500/30 transition-colors">
+                                    <i class="fa-solid fa-hand-holding-heart"></i>
+                                </span>
+                                <div>
+                                    <span class="block text-xs font-bold text-white">Vale Cafuné Sem Pressa</span>
+                                    <span class="text-[8px] text-neutral-400 uppercase">Perfeito pra relaxar</span>
+                                </div>
+                            </div>
+                            <span class="coupon-status text-[9px] bg-purple-600/20 text-purple-300 font-extrabold px-2 py-1 rounded-md border border-purple-500/20">RESGATAR</span>
+                        </div>
+                    </div>
+
+                    <!-- Custom Quote Area -->
+                    <div class="bg-rose-500/10 p-3 rounded-xl border border-rose-500/20 text-center">
+                        <p class="text-[11px] text-rose-100 leading-relaxed italic">
+                            "Feliz Dia dos Namorados! Do seu lado tudo fica mais leve e feliz. Obrigado por ser minha companheira, minha melhor amiga e meu grande amor."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer with CTA -->
+                <div class="flex flex-col gap-2 mt-2">
+                    <button onclick="restartStory()" class="w-full py-2.5 bg-white text-black text-xs font-black rounded-full hover:scale-105 active:scale-95 transition-transform flex items-center justify-center gap-2 shadow-lg">
+                        <i class="fa-solid fa-heart-circle-bolt text-rose-500 animate-pulse"></i>
+                        <span>Ler Nossa História De Novo</span>
+                    </button>
+                    <button onclick="shareLove()" class="w-full py-2 bg-neutral-900 text-white border border-white/10 text-[10px] font-bold rounded-full hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-copy text-rose-400"></i>
+                        <span id="copyBtnText">Copiar Link do Presente</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- NAVIGATION TOUCH AREAS -->
+        <div class="absolute inset-x-0 bottom-24 top-16 flex z-30 pointer-events-none">
+            <!-- Left Tap Target -->
+            <div class="w-[30%] h-full cursor-w-resize pointer-events-auto" onclick="prevSlide()" title="Voltar Slide"></div>
+            <!-- Center Gap for Interactive Cards -->
+            <div class="w-[40%] h-full pointer-events-none"></div>
+            <!-- Right Tap Target -->
+            <div class="w-[30%] h-full cursor-e-resize pointer-events-auto" onclick="nextSlide()" title="Próximo Slide"></div>
+        </div>
+
+        <!-- BOTTOM FOOTER -->
+        <div class="flex items-center justify-between border-t border-neutral-800/80 pt-4 px-2 z-10">
+            <div class="flex items-center gap-2.5">
+                <i class="fa-solid fa-star text-rose-500 text-lg animate-pulse"></i>
+                <div>
+                    <p class="text-xs font-black text-white leading-tight">Eternamente seu</p>
+                    <p class="text-[10px] text-neutral-400">Feito com todo o meu coração</p>
+                </div>
+            </div>
+            <!-- Interactive Heart Counter -->
+            <button onclick="triggerLoveShower(event)" class="flex items-center gap-2 bg-rose-500/10 border border-rose-500/20 text-rose-400 px-3.5 py-1.5 rounded-full hover:bg-rose-500/20 transition-all text-xs font-bold active:scale-95">
+                <i class="fa-solid fa-heart animate-pulse text-rose-500"></i>
+                <span id="heartCount">12</span>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- AUDIO PLAYER ELEMENT -->
+    <!-- Coloque o link do seu arquivo de áudio (MP3) no 'src' abaixo -->
+    <audio id="loveAudio" loop>
+        <source id="audioSource" src="https://files.catbox.moe/xc1wea.mp3" type="audio/mpeg">
+        Seu navegador não suporta este elemento de áudio.
+    </audio>
+
+    <script>
+        /**************************************************************
+         * CONFIGURAÇÃO DA MÚSICA DE FUNDO:
+         * Substitua o endereço dentro de aspas pelo link direto do seu .mp3.
+         * Exemplos de onde hospedar gratuitamente: Dropbox, GitHub Pages,
+         * Discord, Archive.org ou qualquer servidor web de sua preferência.
+         **************************************************************/
+        const MUSICA_URL = "https://files.catbox.moe/xc1wea.mp3"; // <-- Coloque o link do seu arquivo de áudio aqui
+
+        // Aplica o link configurado no elemento de áudio
+        const audioEl = document.getElementById('loveAudio');
+        const audioSource = document.getElementById('audioSource');
+        if (audioEl && audioSource) {
+            audioSource.src = MUSICA_URL;
+            audioEl.load(); // Carrega o novo arquivo
+        }
+
+        // Variáveis de controle de Slides e progresso
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.story-card');
+        const progressIndicatorsContainer = document.getElementById('progressIndicators');
+        let slideTimer = null;
+        let isPaused = false;
+        let loveCount = 12;
+
+        // Data de aniversário (Iniciado em 12 de Junho de 2024 por padrão)
+        const anniversaryDate = new Date('2025-12-11T00:00:00');
+
+        function toggleCarouselPause() {
+            isPaused = !isPaused;
+            const btnText = document.getElementById('carouselPauseText');
+            const btnIcon = document.getElementById('carouselPauseIcon');
+            const pulseDot = document.getElementById('carouselPulseDot');
+
+            if (isPaused) {
+                btnText.innerText = "RETOMAR HISTÓRIA";
+                btnText.classList.add('text-green-400');
+                btnText.classList.remove('text-neutral-400');
+                btnIcon.className = "fa-solid fa-play text-green-400 text-[9px]";
+                if (pulseDot) {
+                    pulseDot.classList.remove('bg-rose-500', 'animate-pulse');
+                    pulseDot.classList.add('bg-green-500');
+                }
+            } else {
+                btnText.innerText = "PAUSAR HISTÓRIA";
+                btnText.classList.remove('text-green-400');
+                btnText.classList.add('text-neutral-400');
+                btnIcon.className = "fa-solid fa-pause text-rose-400 text-[9px]";
+                if (pulseDot) {
+                    pulseDot.classList.remove('bg-green-500');
+                    pulseDot.classList.add('bg-rose-500', 'animate-pulse');
+                }
+            }
+        }
+
+        function initProgressIndicators() {
+            progressIndicatorsContainer.innerHTML = '';
+            slides.forEach((slide, idx) => {
+                const indicator = document.createElement('div');
+                indicator.className = 'progress-indicator';
+                
+                const fill = document.createElement('div');
+                fill.className = 'progress-fill';
+                fill.id = `fill-${idx}`;
+                
+                indicator.appendChild(fill);
+                indicator.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    goToSlide(idx);
+                });
+                progressIndicatorsContainer.appendChild(indicator);
+            });
+        }
+
+        // Contador de tempo real
+        function updateCounter() {
+            const now = new Date();
+            const difference = now - anniversaryDate;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            const daysEl = document.getElementById('count-days');
+            const hoursEl = document.getElementById('count-hours');
+            const minEl = document.getElementById('count-minutes');
+            const secEl = document.getElementById('count-seconds');
+
+            if (daysEl && hoursEl && minEl && secEl) {
+                daysEl.innerText = String(days).padStart(2, '0');
+                hoursEl.innerText = String(hours).padStart(2, '0');
+                minEl.innerText = String(minutes).padStart(2, '0');
+                secEl.innerText = String(seconds).padStart(2, '0');
+            }
+        }
+
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+        // Controle dos Slides
+        function goToSlide(index) {
+            if (index < 0 || index >= slides.length) return;
+
+            clearTimeout(slideTimer);
+            clearInterval(progressIntervalId);
+
+            slides.forEach((slide, idx) => {
+                slide.classList.remove('active', 'inactive-left', 'inactive-right');
+                const fill = document.getElementById(`fill-${idx}`);
+                
+                if (idx < index) {
+                    slide.classList.add('inactive-left');
+                    if (fill) fill.classList.add('completed');
+                } else if (idx > index) {
+                    slide.classList.add('inactive-right');
+                    if (fill) {
+                        fill.classList.remove('completed');
+                        fill.style.width = '0%';
+                    }
+                } else {
+                    slide.classList.add('active');
+                    if (fill) {
+                        fill.classList.remove('completed');
+                        fill.style.width = '0%';
+                    }
+                }
+            });
+
+            currentSlideIndex = index;
+            startSlideProgress(index);
+        }
+
+        let progressIntervalId = null;
+        
+        function startSlideProgress(index) {
+            const slide = slides[index];
+            const duration = parseInt(slide.getAttribute('data-duration')) || 8000;
+            const fill = document.getElementById(`fill-${index}`);
+            
+            let elapsed = 0;
+            const interval = 100;
+
+            if (fill) {
+                fill.style.width = '0%';
+            }
+
+            progressIntervalId = setInterval(() => {
+                if (!isPaused) {
+                    elapsed += interval;
+                    const percent = Math.min((elapsed / duration) * 100, 100);
+                    if (fill) {
+                        fill.style.width = `${percent}%`;
+                    }
+
+                    if (elapsed >= duration) {
+                        clearInterval(progressIntervalId);
+                        nextSlide();
+                    }
+                }
+            }, interval);
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < slides.length - 1) {
+                goToSlide(currentSlideIndex + 1);
+            } else {
+                goToSlide(0);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlideIndex > 0) {
+                goToSlide(currentSlideIndex - 1);
+            } else {
+                goToSlide(0);
+            }
+        }
+
+        function restartStory() {
+            goToSlide(0);
+            triggerLoveShower(null);
+        }
+
+        // Controle de Reprodução de Áudio Real
+        let audioIsPlaying = false;
+
+        function toggleAudioPlayback() {
+            if (!audioEl) return;
+
+            if (audioIsPlaying) {
+                audioEl.pause();
+                audioIsPlaying = false;
+                
+                // Pausar animações visuais
+                document.querySelectorAll('.visualizer-bar').forEach(bar => {
+                    bar.style.animationPlayState = 'paused';
+                });
+                document.getElementById('musicStatusText').innerText = "SOM MUDO";
+                document.getElementById('musicStatusText').classList.remove('text-rose-400');
+                document.getElementById('musicStatusText').classList.add('text-neutral-400');
+                document.getElementById('playPauseIcon').className = "fa-solid fa-play text-sm ml-0.5";
+                document.getElementById('discIcon').classList.remove('animate-spin');
+            } else {
+                // Tenta dar play (iOS/Navegadores exigem interação do usuário, por isso esta função roda em cliques)
+                audioEl.play().then(() => {
+                    audioIsPlaying = true;
+                    
+                    // Iniciar animações visuais
+                    document.querySelectorAll('.visualizer-bar').forEach(bar => {
+                        bar.style.animationPlayState = 'running';
+                    });
+                    document.getElementById('musicStatusText').innerText = "TOCANDO";
+                    document.getElementById('musicStatusText').classList.add('text-rose-400');
+                    document.getElementById('musicStatusText').classList.remove('text-neutral-400');
+                    document.getElementById('playPauseIcon').className = "fa-solid fa-pause text-sm";
+                    
+                    // Adicionar efeito de rotação no disco do player
+                    const disc = document.getElementById('discIcon');
+                    disc.className = "fa-solid fa-compact-disc text-white text-2xl animate-spin";
+                    disc.style.animationDuration = "4s";
+                }).catch(err => {
+                    console.log("Reprodução impedida pelo navegador: necessita clique do usuário.", err);
+                });
+            }
+        }
+
+        // Atualizador de progresso do áudio real no player do Slide 3
+        if (audioEl) {
+            audioEl.addEventListener('timeupdate', () => {
+                const current = audioEl.currentTime;
+                const duration = audioEl.duration;
+                if (!isNaN(duration) && duration > 0) {
+                    const percent = (current / duration) * 100;
+                    document.getElementById('audioProgressBar').style.width = `${percent}%`;
+                    document.getElementById('audioCurrentTime').innerText = formatTime(current);
+                }
+            });
+
+            audioEl.addEventListener('loadedmetadata', () => {
+                document.getElementById('audioDuration').innerText = formatTime(audioEl.duration);
+            });
+        }
+
+        function formatTime(secs) {
+            const minutes = Math.floor(secs / 60);
+            const seconds = Math.floor(secs % 60);
+            return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        // Lógica do Quiz
+        function selectValentineOption(button, choice) {
+            const allButtons = button.parentNode.querySelectorAll('.quiz-btn');
+            const feedbackText = document.getElementById('quizFeedback');
+            
+            allButtons.forEach(btn => {
+                btn.classList.remove('bg-neutral-800', 'border-rose-500/50', 'border-violet-500/50', 'text-rose-400', 'text-violet-400');
+                btn.style.opacity = '0.5';
+                const icon = btn.querySelector('i');
+                icon.className = 'fa-regular fa-circle text-neutral-500';
+            });
+
+            button.style.opacity = '1';
+            const statusIcon = button.querySelector('i');
+
+            if (choice === 'todas') {
+                button.classList.add('border-rose-500/50', 'text-rose-400');
+                statusIcon.className = 'fa-solid fa-circle-check text-rose-400';
+                feedbackText.innerText = "Excelente! Vamos fazer todas com certeza! ✨💖";
+                feedbackText.className = "text-[10px] text-center font-bold text-rose-400 animate-bounce";
+                triggerLoveShower(null);
+            } else {
+                button.classList.add('border-violet-500/50', 'text-violet-400');
+                statusIcon.className = 'fa-solid fa-heart text-violet-400';
+                feedbackText.innerText = "é pra você escolher \"todas as opções\"! 😡";
+                feedbackText.className = "text-[10px] text-center font-bold text-pink-300";
+            }
+        }
+
+        // Ativação de Cupons
+        function claimCoupon(element, couponName) {
+            const statusBadge = element.querySelector('.coupon-status');
+            
+            if (statusBadge && statusBadge.innerText !== 'RESGATADO!') {
+                statusBadge.innerText = 'RESGATADO!';
+                statusBadge.className = 'coupon-status text-[9px] bg-green-600/30 text-green-300 font-extrabold px-2 py-1 rounded-md border border-green-500/20';
+                
+                triggerLoveShower(null);
+                
+                const toast = document.createElement('div');
+                toast.className = 'absolute bg-green-500 text-black text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg z-50 transition-all duration-1000';
+                toast.innerHTML = `<i class="fa-solid fa-bell mr-1"></i> Você ativou o vale de ${couponName}!`;
+                
+                toast.style.left = '50%';
+                toast.style.top = '30%';
+                toast.style.transform = 'translate(-50%, -50%)';
+                element.parentNode.parentNode.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 1000);
+                }, 2000);
+            }
+        }
+
+        // Copiar Link
+        function shareLove() {
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+
+            const copyBtnText = document.getElementById('copyBtnText');
+            copyBtnText.innerText = "Link copiado com sucesso! 💝";
+            
+            setTimeout(() => {
+                copyBtnText.innerText = "Copiar Link do Presente";
+            }, 3000);
+        }
+
+        // Chuva de corações
+        function triggerLoveShower(event) {
+            loveCount += 1;
+            document.getElementById('heartCount').innerText = loveCount;
+
+            const container = document.getElementById('heartContainer');
+            const iterations = event ? 12 : 30;
+            for (let i = 0; i < iterations; i++) {
+                const heart = document.createElement('i');
+                heart.className = 'fa-solid fa-heart heart-particle text-xl';
+                
+                const leftPos = Math.random() * 100;
+                const animDuration = 2 + Math.random() * 2.5;
+                const size = 12 + Math.random() * 18;
+                const hue = 340 + Math.random() * 25;
+                
+                heart.style.left = `${leftPos}vw`;
+                heart.style.animationDuration = `${animDuration}s`;
+                heart.style.fontSize = `${size}px`;
+                heart.style.color = `hsla(${hue}, 100%, 65%, ${0.5 + Math.random() * 0.5})`;
+                
+                container.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, animDuration * 1000);
+            }
+        }
+
+        // Inicializador geral
+        window.onload = function() {
+            initProgressIndicators();
+            goToSlide(0);
+            
+            document.querySelectorAll('.visualizer-bar').forEach(bar => {
+                bar.style.animationPlayState = 'paused';
+            });
+
+            setTimeout(() => {
+                triggerLoveShower(null);
+            }, 1200);
+        };
+    </script>
+</body>
+</html>
