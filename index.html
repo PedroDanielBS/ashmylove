@@ -15,11 +15,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        * { box-sizing: border-box; }
+
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: clip;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #0b050a;
-            overflow-x: hidden;
+            overflow-x: clip;
             user-select: none;
+            padding: 0;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
         }
 
         .font-serif-title {
@@ -40,6 +55,16 @@
             opacity: 0.5;
             mix-blend-mode: screen;
             animation: floatGlow 10s ease-in-out infinite alternate;
+            max-width: 100vw;
+        }
+
+        @media (max-width: 640px) {
+            .glow-blob {
+                width: 180px !important;
+                height: 180px !important;
+                filter: blur(70px);
+                opacity: 0.35;
+            }
         }
 
         @keyframes floatGlow {
@@ -150,7 +175,7 @@
         }
     </style>
 </head>
-<body class="text-white flex items-center justify-center min-h-screen relative overflow-hidden p-3 md:p-6 select-none">
+<body class="text-white flex items-center justify-center min-h-screen relative overflow-hidden p-2 sm:p-3 md:p-6 select-none">
 
     <!-- Ambient Blur Blobs -->
     <div class="absolute w-[320px] h-[320px] rounded-full bg-rose-600 glow-blob top-[5%] left-[3%] pointer-events-none"></div>
@@ -161,7 +186,7 @@
     <div id="heartContainer" class="absolute inset-0 pointer-events-none overflow-hidden z-40"></div>
 
     <!-- MAIN CARD WRAPPER (Smartphone style Frame) -->
-    <div class="relative w-full max-w-[420px] h-[780px] rounded-[36px] bg-[#0f040b]/95 border border-neutral-800/80 shadow-2xl overflow-hidden flex flex-col justify-between p-6 z-10 transition-all duration-300">
+    <div class="relative w-full max-w-[420px] min-h-[calc(100vh-1rem)] sm:min-h-[780px] h-auto rounded-[36px] bg-[#0f040b]/95 border border-neutral-800/80 shadow-2xl overflow-hidden flex flex-col justify-between p-4 sm:p-6 z-10 transition-all duration-300">
         
         <!-- TOP CONTROL BAR: Progress Indicators, Playback Tag, Sound -->
         <div>
@@ -351,7 +376,7 @@ The Neighbourhood</p>
                         <div class="w-full h-36 rounded-xl overflow-hidden bg-neutral-900 relative">
                             
                             <div class="absolute inset-0 bg-contain bg-center"  onerror="this.style.background='#4c0519'">
-                                <img src="imgs/foto-1.jpg" style="height: 143px; width: 143px; object-fit: cover;"  alt="" srcset="">
+                                <img src="imgs/foto-1.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="">
                             </div>
                         </div>
                         <p class="text-[9px] font-black text-center text-pink-200 mt-2 uppercase tracking-wide">Um dia lindo</p>
@@ -362,7 +387,7 @@ The Neighbourhood</p>
                         <div class="w-full h-36 rounded-xl overflow-hidden bg-neutral-900 relative">
                             
                             <div class="absolute inset-0 bg-contain bg-center" onerror="this.style.background='#4a044e'">
-                                <img src="imgs/foto-2.jpg" style="height: 143px; width: 143px; object-fit: cover;" alt="" srcset="">
+                                <img src="imgs/foto-2.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="">
                             </div>
                         </div>
                         <p class="text-[9px] font-black text-center text-pink-200 mt-2 uppercase tracking-wide">Meu momento feliz</p>
@@ -390,7 +415,7 @@ The Neighbourhood</p>
                     <div class="bg-black/40 p-2 rounded-2xl border border-white/10 shadow-lg transform rotate-[-3deg] hover:rotate-0 transition-all duration-300">
                         <div class="w-full h-36 rounded-xl overflow-hidden bg-neutral-900 relative">
                             <div class="absolute inset-0 bg-contain bg-center" onerror="this.style.background='#4c0519'">
-                                <img src="imgs/foto-3.jpg" style="height: 143px; width: 143px; object-fit: cover;" alt="" srcset="">
+                                <img src="imgs/foto-3.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="">
                             </div>
                             
                         </div>
@@ -401,7 +426,7 @@ The Neighbourhood</p>
                     <div class="bg-black/40 p-2 rounded-2xl border border-white/10 shadow-lg transform rotate-[3deg] hover:rotate-0 transition-all duration-300">
                         <div class="w-full h-36 rounded-xl overflow-hidden bg-neutral-900 relative">
                             <div class="absolute inset-0 bg-contain bg-center" onerror="this.style.background='#4a044e'">
-                            <img src="imgs/foto-4.jpg" style="height: 143px; width: 143px; object-fit: cover;" alt="" srcset="">
+                            <img src="imgs/foto-4.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="">
                             </div>
                         </div>
                         <p class="text-[9px] font-black text-center text-pink-200 mt-2 uppercase tracking-wide">Meu momento feliz</p>
